@@ -1,10 +1,10 @@
 {
   "name": "fsd-second",
   "version": "1.0.0",
-  "description": "Github pages\r https://muninhugin.github.io/FSD-second/",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development --open",
+    "dev": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production"
   },
   "repository": {
@@ -18,16 +18,12 @@
   },
   "homepage": "https://github.com/MuninHugin/FSD-second#readme",
   "devDependencies": {
-    "babel-core": "^6.26.3",
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
     "babel-loader": "^8.1.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-3": "^6.24.1",
     "path": "^0.12.7",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
-  },
-  "dependencies": {
-    "jquery": "^3.5.1"
   }
 }
