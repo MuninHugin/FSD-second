@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url(79315f160c4c680ec9ecac98f98b8758.ttf) format('truetype');
+}
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    padding-top: 5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.logo {
+    background-image: url(816d966fb9e22376bcf6ea18cfe675cb.jpg);
+    background-size: cover;
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+}
+.logo {
+  border: 2px solid #8f2828;
+}
