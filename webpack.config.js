@@ -1,40 +1,51 @@
 const path = require('path')
-const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-
     context: path.resolve(__dirname, 'src'),
-    entry: {
-        index: './index.js'
-    },
+    mode: 'development',
+    entry: './index.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js'
+        filename: '[contenthash].js',
+        path: path.resolve(__dirname, 'dist')
     },
-
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
+    devServer: {
+        port: 8081
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './index.html'
+        }),
+        new CleanWebpackPlugin(),
+        new CopyWebpackPlugin({
+            patterns: [
+            {
+                from: path.resolve(__dirname, 'src/assets/img'),
+                to: path.resolve(__dirname, 'dist/img')
+            }
+        ]})
+    ],
     module: {
         rules: [
             {
-                test: /\.s[ac]ss$/i,
-                use: [
-                  'style-loader',
-                  'css-loader',
-                  'sass-loader',
-                ],
-              },
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                loader: 'file-loader',
+            },
+            {
+                test: /\.(ttf|woff|woff2|eof)$/i,
+                loader: 'file-loader',
+            }
         ]
-    },
-
-    plugins: [
-        new HtmlWebpackPlugin({
-            minify: false,
-            template: './index.html'
-        }),
-        new MiniCssExtractPlugin({
-            filename: 'css/style.css'
-        })
-    ]
-
+    }
 }
