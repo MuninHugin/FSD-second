@@ -64,12 +64,6 @@ module.exports = {
     },
     devtool: isDev ? 'source-map' : '',
     plugins: [
-        // new HtmlWebpackPlugin({
-        //     template: './pug/layout/main.pug',
-        //     minify: {
-        //         collapseWhitespace: isProd
-        //     }
-        // }),
         ...PAGES.map(
             page => new HtmlWebpackPlugin({
                 template: `${PAGES_DIR}/${page}`,
