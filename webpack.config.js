@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
-const loader = require('sass-loader')
+const fs = require('fs')
 
 const isDev = process.env.NODE_ENV === 'develoment'
 const isProd = !isDev
@@ -44,6 +44,8 @@ const cssLoaders = extra => {
 
     return loaders
 }
+const PAGES_DIR = path.resolve(__dirname, 'src/pug/pages/')
+const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'))
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
@@ -62,12 +64,19 @@ module.exports = {
     },
     devtool: isDev ? 'source-map' : '',
     plugins: [
-        new HtmlWebpackPlugin({
-            template: './index.html',
-            minify: {
-                collapseWhitespace: isProd
-            }
-        }),
+        // new HtmlWebpackPlugin({
+        //     template: './pug/layout/main.pug',
+        //     minify: {
+        //         collapseWhitespace: isProd
+        //     }
+        // }),
+        ...PAGES.map(
+            page => new HtmlWebpackPlugin({
+                template: `${PAGES_DIR}/${page}`,
+                minify: { collapseWhitespace: isProd},
+                filename: `./${page.replace(/\.pug/,'.html')}`
+            })
+        ),
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin({
             patterns: [
@@ -82,6 +91,10 @@ module.exports = {
     ],
     module: {
         rules: [
+            {
+                test: /\.pug$/,
+                loader: 'pug-loader'
+            },
             {
                 test: /\.css$/,
                 use: cssLoaders()

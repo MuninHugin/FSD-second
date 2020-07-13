@@ -1,0 +1,18 @@
+extends ../layout/main-other
+
+block variables
+    - var title = 'Webpack + Pug'
+    - var description = 'description for Webpack + Pug'
+    - var PageClass = 'index-page'
+
+block content
+  a(href='/') Главная
+  #container.col
+    h1 Webpack base
+    hr
+    +item('Some block 1', 'some description 1')
+    hr
+    +item('Some block 2', 'some description 2')
+    hr
+    +item('Some block 3', 'some description 3')
+    hr
