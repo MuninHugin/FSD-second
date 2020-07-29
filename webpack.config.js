@@ -102,7 +102,7 @@ module.exports = {
                 loader: 'file-loader',
             },
             {
-                test: /\.(ttf|woff|woff2|eof)$/i,
+                test: /\.(ttf|woff|woff2|eot|otf)$/i,
                 loader: 'file-loader',
             },
             {

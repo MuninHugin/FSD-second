@@ -2,3 +2,10 @@ mixin item(title, descr)
     .item
         h2.item-title= title
         p.item-descr= descr
+
+mixin square-block(color, title, descr)
+    .square-block
+        div.square(class= color)
+        div
+            h2.square-block__title= title
+            p.square-block__descr= descr
