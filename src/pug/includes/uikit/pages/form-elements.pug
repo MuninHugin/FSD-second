@@ -1,17 +1,66 @@
 .container
     .container__item
       p.label-wrap
-        label(for='input-default')  Text field
+        label.label(for='input-default')  Text field
         span.label-wrap__annotation default
-      input.input#input-default(type="email" placeholder='Email')
+      input.input#input-default(type="email" name="email" placeholder='Email')
       p.label-wrap
-        label(for='input-focus')  Text field
+        label.label(for='input-focus')  Text field
         span.label-wrap__annotation hover/focus
-      input.input.input_active#input-focus(type="text" placeholder='This is pretty awesome')
+      input.input.input_active#input-focus(type="text" name="some_text" placeholder='This is pretty awesome')
       p.label-wrap
-        label(for='dropdown')  Dropdown
+        label.label  Dropdown
         span.label-wrap__annotation default
-      select.input#dropdown
-        option(value="0") Сколько гостей
+      div.input.input_active.dropdown Сколько гостей
+      p.label-wrap
+        label.label(for='input-masked')  masked text field
+        span.label-wrap__annotation default
+      input.input#input-masked(type="text" name="date" placeholder='ДД.ММ.ГГГГ')
+      .dates-wrap
+        .dates-wrap__item
+          p.label-wrap
+            label.label(for='date-dropdown-1')  date Dropdown
+          input.input.input_active.dropdown#date-dropdown-1(type="text" name="date" placeholder='ДД.ММ.ГГГГ')
+        .dates-wrap__item
+          p.label-wrap
+            label.label(for='date-dropdown-2')  date Dropdown
+          input.input.input_active.dropdown#date-dropdown-2(type="text" name="date" placeholder='19.08.2019')
+      p.label-wrap
+        label.label  filter date dropdown
+      div.input.input_active.dropdown 19 авг - 23 авг
+      p.label-wrap
+        label.label(for='input-subscription')  subscription text field
+      .subscription-block
+        input.input#input-subscription(type="text" name="email" placeholder='Email')
+        button.subscription-block__button(type="submit")
+          img(src="img/arrow_forward.png")
+
+      
     .container__item
+      p.label Checkbox Buttons
+      label
+        input.checkbox(type="checkbox" name="check_smoke")
+        span  Можно курить
+      label
+        input.checkbox(type="checkbox" name="check_pets" checked)
+        span  Можно с питомцами
+      label
+        input.checkbox(type="checkbox" name="check_guests" checked)
+        span  Можно пригласить гостей (до 10 человек)
+      p.label Radio Buttons
+      label
+        input.radio(type="radio" name="sex" value="man" checked)
+        span  Мужчина
+      label
+        input.radio(type="radio" name="sex" value="woman")
+        span  Женщина
+      p.label toggle
+      label      
+        input.checkbox(type="checkbox" name="check_promotion" checked)
+        span Получать спецпредложения
+      label      
+        input.checkbox(type="checkbox" name="check_promotion")
+        span Получать спецпредложения
+      p.label like button
+
     .container__item
